@@ -41,7 +41,8 @@ int main()
 
         Info.sin_family = AF_INET;
         Info.sin_port = htons(start);
-        nret = connect(sock, NULL, NULL);
+        Info.sin_addr.s_addr=inet_addr(IP);
+        nret = connect(sock,(SOCKADDR*)(&Info),sizeof(Info));
         // error is for line above
         if(nret != SOCKET_ERROR)
         {
